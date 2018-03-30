@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="/plugins/layui/css/layui.css"/>
+</head>
+<body class="hold-transition skin-blue sidebar-mini" >
+<div style="margin-top: 20px;text-align: center">
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="float: none;display: inline-block">地址</label>
+        <input type="text" id="urlStr" name="title" style="width: 300px;display: inline-block" class="layui-input"/>
+        <button class="layui-btn" onclick="search(1)" lay-filter="formDemo">搜索</button>
+        <button class="layui-btn" onclick="insertMock()" lay-filter="formDemo">新增</button>
+    </div>
+</div>
+<table class="layui-table" style="margin-left: 20px;margin-right: 40px;width: 1200px; margin: 0 auto;">
+    <tr>
+        <th style="width: 50px;">编号</th>
+        <th style="width: 200px;">url</th>
+        <th >data</th>
+        <th style="width: 150px;">创建时间</th>
+        <th style="width: 160px">操作</th>
+    </tr>
+    <tbody id="dataTable"></tbody>
+</table>
+<div style="width: 500px" id="window-div">
+    <div class="layui-form-item" style="margin-top: 20px">
+        <label class="layui-form-label">地址</label>
+        <div class="layui-input-block">
+            <input type="text" id="url" name="title" style="width: 400px;display: inline-block" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">数据</label>
+        <div class="layui-input-block">
+            <input type="text" id="data" style="width: 400px;display: inline-block" name="title" class="layui-input"/>
+        </div>
+    </div>
+</div>
+<div id="bootpag" style="text-align: center;"></div>
+</body>
+<script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="/plugins/layui/layui.all.js"></script>
+<script src="/js/index.js"></script>
+</html>

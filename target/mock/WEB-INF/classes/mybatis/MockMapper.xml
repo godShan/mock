@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zbjk.creditfactory.mock.mapper.MockMapper">
+
+	<!--实体映射-->
+	<resultMap id="BaseResultMap" type="com.zbjk.creditfactory.mock.dto.MockDto">
+		<id property="id" column="ID" />
+		<result property="url" column="URL" />
+		<result property="data" column="DATA" jdbcType="DATE"/>
+		<result property="createdAt" column="CREATED_AT" />
+	</resultMap>
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 ID,	URL,	DATA,	CREATED_AT
+	</sql>
+
+	<!-- 添加 -->
+	<insert id="insertMock"  parameterType="com.zbjk.creditfactory.mock.domain.Mock">
+		INSERT INTO mock
+		(URL, DATA, CREATED_AT)
+		VALUES
+		(#{mock.url}, #{mock.data}, #{mock.createdAt})
+	</insert>
+
+	<!-- 查询 -->
+	<select id="selectMockByUrl" resultMap="BaseResultMap" parameterType="com.zbjk.creditfactory.mock.domain.Mock">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM mock
+		<if test="mock.url != null and mock.url != ''">
+		WHERE URL = #{mock.url}
+		</if>
+		<if test="mock.id != null and mock.id != ''">
+			WHERE ID = #{mock.id}
+		</if>
+		order by CREATED_AT desc
+	</select>
+
+	<!-- 删除 -->
+	<delete id="deleteMockById" parameterType="java.lang.Long">
+		delete from mock where ID = #{id}
+	</delete>
+
+	<!-- 修 改-->
+	<update id="updateMockById" parameterType="com.zbjk.creditfactory.mock.domain.Mock">
+		UPDATE mock
+		<set>
+			<if test="mock.url != null">
+				URL = #{mock.url},
+			</if>
+			<if test="mock.data != null">
+				DATA = #{mock.data},
+			</if>
+		</set>
+		WHERE ID = #{mock.id}
+	</update>
+
+</mapper>
